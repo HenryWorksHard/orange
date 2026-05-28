@@ -1,26 +1,93 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: #0a0d12;
+  --color-bg-2: #11161e;
+  --color-panel: #161c26;
+  --color-panel-2: #1d2532;
+  --color-line: #2a3447;
+  --color-fg: #e8ecf4;
+  --color-mute: #8a93a6;
+
+  --color-neon: #39ff8a;
+  --color-neon-2: #00d971;
+  --color-purple: #a259ff;
+  --color-purple-2: #7a3fd6;
+  --color-orange: #ff7a1a;
+  --color-orange-2: #ff5a00;
+  --color-pink: #ff3d8a;
+  --color-cyan: #38e8ff;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: var(--font-display), "Impact", system-ui, sans-serif;
+  --font-tag: var(--font-tag), "Comic Sans MS", system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  background: var(--color-bg);
+  color: var(--color-fg);
 }
 
+/* base gamer-room backdrop: dark with subtle grid + radial neon glow */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(circle at 20% 15%, rgba(162, 89, 255, 0.18), transparent 55%),
+    radial-gradient(circle at 80% 85%, rgba(57, 255, 138, 0.14), transparent 50%),
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: auto, auto, 44px 44px, 44px 44px;
 }
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  48% { opacity: 1; }
+  50% { opacity: 0.6; }
+  52% { opacity: 1; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(57, 255, 138, 0.55)); }
+  50%      { filter: drop-shadow(0 0 18px rgba(57, 255, 138, 0.95)); }
+}
+
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.08); }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes caret-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.glow-neon { text-shadow: 0 0 10px rgba(57, 255, 138, 0.7), 0 0 22px rgba(57, 255, 138, 0.35); }
+.glow-purple { text-shadow: 0 0 10px rgba(162, 89, 255, 0.7), 0 0 22px rgba(162, 89, 255, 0.35); }
+.glow-orange { text-shadow: 0 0 12px rgba(255, 122, 26, 0.65), 0 0 28px rgba(255, 90, 0, 0.35); }
+
+.scanlines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.04) 0px,
+    rgba(255, 255, 255, 0.04) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+}
+
+.animate-flicker { animation: flicker 4.5s infinite; }
+.animate-glow { animation: glow-pulse 2.4s ease-in-out infinite; }
+.animate-blink { animation: blink 5s infinite; transform-origin: center; }
+.animate-float { animation: float-y 4s ease-in-out infinite; }
+.animate-caret { animation: caret-blink 1s steps(2) infinite; }
