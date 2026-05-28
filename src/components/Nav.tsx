@@ -29,8 +29,8 @@ function Logo() {
 
 export default function Nav() {
   return (
-    <header className="z-50 w-full shrink-0 px-3 pt-3 sm:px-5 sm:pt-4">
-      <nav className="mx-auto flex w-full max-w-[1200px] items-center justify-between rounded-full bg-ink px-3 py-2 shadow-[0_8px_30px_-10px_rgba(0,0,0,0.45)]">
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
+      <nav className="mx-auto flex w-full max-w-[1200px] items-center justify-between rounded-full bg-ink px-3 py-2 shadow-[0_8px_30px_-10px_rgba(0,0,0,0.65)]">
         <Link href="/" className="flex items-center gap-2 pl-1">
           <Logo />
           <span className="font-fat text-2xl tracking-[0.02em] text-orange leading-none pt-1">

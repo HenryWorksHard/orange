@@ -12,7 +12,7 @@ export default function ChatBar() {
   }
 
   return (
-    <div className="z-40 w-full shrink-0 px-3 pb-3 sm:px-5 sm:pb-4">
+    <div className="fixed inset-x-0 bottom-0 z-50 px-3 pb-3 sm:px-5 sm:pb-4">
       <form
         onSubmit={onSubmit}
         className="mx-auto flex w-full max-w-[960px] items-center gap-2 rounded-full border-[3px] border-ink bg-cream px-2 py-2 shadow-[5px_5px_0_0_rgba(0,0,0,0.85)]"

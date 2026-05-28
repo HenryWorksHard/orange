@@ -2,17 +2,16 @@ import Image from "next/image";
 
 const IMG_W = 1448;
 const IMG_H = 1086;
-const IMG_ASPECT = IMG_W / IMG_H; // ~1.333
+const IMG_ASPECT = IMG_W / IMG_H;
 
 export default function Hero() {
   return (
     <section
-      className="relative flex-1 overflow-hidden"
+      className="fixed inset-0 z-0 overflow-hidden"
       style={{ containerType: "size" }}
     >
-      {/* Aspect-locked wrapper sized to COVER the parent (no cream gutters).
-          Top-anchored so the painted ORANGE wordmark stays visible; any overflow
-          spills past the bottom and is clipped by the section. */}
+      {/* Aspect-locked wrapper sized to COVER the viewport. Top-anchored so the
+          painted ORANGE wordmark stays just below the nav. */}
       <div
         className="absolute left-1/2 top-0 -translate-x-1/2"
         style={{
@@ -29,7 +28,7 @@ export default function Hero() {
           className="object-cover"
         />
 
-        {/* Speech bubble — sits LEFT of the painted chair, tail pointing right */}
+        {/* Speech bubble — LEFT of the painted chair, tail pointing right */}
         <div
           className="absolute z-10"
           style={{ left: "8%", top: "40%", width: "44%", maxWidth: "440px" }}
