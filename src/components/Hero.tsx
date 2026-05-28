@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-const IMG_W = 1448;
-const IMG_H = 1086;
+const IMG_W = 1672;
+const IMG_H = 941;
 const IMG_ASPECT = IMG_W / IMG_H;
 
 export default function Hero() {
@@ -31,7 +31,7 @@ export default function Hero() {
         {/* Speech bubble — LEFT of the painted chair, tail pointing right */}
         <div
           className="absolute z-10"
-          style={{ left: "8%", top: "40%", width: "44%", maxWidth: "440px" }}
+          style={{ left: "8%", top: "44%", width: "36%", maxWidth: "440px" }}
         >
           <div className="relative rounded-2xl border-[3px] border-ink bg-cream px-5 py-4 text-left font-mono text-sm text-ink shadow-[6px_6px_0_0_rgba(0,0,0,0.85)] sm:text-base">
             <span className="font-fat text-orange">orange:</span> sup. type below and i&apos;ll yap back.
