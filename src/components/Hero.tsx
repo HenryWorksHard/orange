@@ -2,31 +2,33 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section
-      id="home"
-      className="relative isolate flex w-full flex-col items-center px-4 pt-28 pb-10 sm:pt-32"
-    >
-      {/* hero illustration */}
-      <div className="relative mx-auto w-full max-w-[1100px]">
-        <div className="relative overflow-hidden rounded-3xl border-[3px] border-ink shadow-[8px_8px_0_0_rgba(0,0,0,0.85)]">
-          <Image
-            src="/background.png"
-            alt="Orange's gamer desk setup"
-            width={1448}
-            height={1086}
-            priority
-            sizes="(max-width: 1100px) 100vw, 1100px"
-            className="block h-auto w-full"
-          />
-        </div>
-      </div>
+    <section className="relative flex min-h-0 flex-1 items-center justify-center px-3 py-3">
+      {/* Image area locked to the illustration's aspect ratio so % overlays line up with painted elements */}
+      <div className="relative h-full aspect-[1448/1086] max-w-full">
+        <Image
+          src="/background.png"
+          alt="Orange's gamer desk setup"
+          fill
+          priority
+          sizes="100vw"
+          className="object-contain"
+        />
 
-      {/* speech bubble — sets up the chat affordance */}
-      <div className="relative z-20 mx-auto mt-6 max-w-xl px-4">
-        <div className="relative rounded-2xl border-[3px] border-ink bg-cream px-5 py-4 text-center font-mono text-sm text-ink shadow-[5px_5px_0_0_rgba(0,0,0,0.85)]">
-          <span className="font-fat text-orange">orange:</span> sup. type below and i&apos;ll yap back.
-          <span className="ml-1 inline-block h-4 w-2 bg-ink align-middle animate-caret" />
-          <div className="absolute -top-[10px] left-1/2 h-4 w-4 -translate-x-1/2 rotate-45 border-l-[3px] border-t-[3px] border-ink bg-cream" />
+        {/* Speech bubble overlay — sits LEFT of the chair where the character will be */}
+        <div
+          className="absolute z-10"
+          style={{ left: "8%", top: "32%", width: "44%", maxWidth: "440px" }}
+        >
+          <div className="relative rounded-2xl border-[3px] border-ink bg-cream px-5 py-4 text-left font-mono text-sm text-ink shadow-[6px_6px_0_0_rgba(0,0,0,0.85)] sm:text-base">
+            <span className="font-fat text-orange">orange:</span> sup. type below and i&apos;ll yap back.
+            <span className="ml-1 inline-block h-4 w-2 bg-ink align-middle animate-caret" />
+
+            {/* tail pointing right toward the chair */}
+            <div
+              aria-hidden
+              className="absolute top-1/2 -right-[12px] h-5 w-5 -translate-y-1/2 rotate-45 border-r-[3px] border-t-[3px] border-ink bg-cream"
+            />
+          </div>
         </div>
       </div>
     </section>

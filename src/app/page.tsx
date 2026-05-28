@@ -4,12 +4,10 @@ import ChatBar from "@/components/ChatBar";
 
 export default function Home() {
   return (
-    <>
+    <div className="flex h-full flex-col">
       <Nav />
-      <main className="flex flex-1 flex-col">
-        <Hero />
-      </main>
+      <Hero />
       <ChatBar />
-    </>
+    </div>
   );
 }
