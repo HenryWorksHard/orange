@@ -1,32 +1,60 @@
 import Link from "next/link";
 
+function Logo() {
+  return (
+    <svg viewBox="0 0 64 64" className="h-11 w-11" aria-label="Orange">
+      <defs>
+        <radialGradient id="bodyG" cx="40%" cy="35%" r="70%">
+          <stop offset="0%" stopColor="#ffb45e" />
+          <stop offset="100%" stopColor="#e87a18" />
+        </radialGradient>
+      </defs>
+      {/* leaf on top */}
+      <path d="M40 8 Q49 4 53 11 Q46 14 41 13 Z" fill="#3aa052" stroke="#0b0b0b" strokeWidth="1.6" />
+      <path d="M40 8 L36 14" stroke="#0b0b0b" strokeWidth="1.6" strokeLinecap="round" />
+      {/* ears */}
+      <path d="M14 22 L18 8 L26 18 Z" fill="url(#bodyG)" stroke="#0b0b0b" strokeWidth="1.8" strokeLinejoin="round" />
+      <path d="M50 22 L46 8 L38 18 Z" fill="url(#bodyG)" stroke="#0b0b0b" strokeWidth="1.8" strokeLinejoin="round" />
+      {/* head/body */}
+      <ellipse cx="32" cy="38" rx="22" ry="20" fill="url(#bodyG)" stroke="#0b0b0b" strokeWidth="2" />
+      {/* face (cream) */}
+      <ellipse cx="32" cy="42" rx="14" ry="13" fill="#fff1d6" stroke="#0b0b0b" strokeWidth="1.6" />
+      {/* eyes */}
+      <ellipse cx="26" cy="38" rx="3.2" ry="3.8" fill="#0b0b0b" />
+      <ellipse cx="38" cy="38" rx="3.2" ry="3.8" fill="#0b0b0b" />
+      <circle cx="27.2" cy="36.6" r="1" fill="#fff" />
+      <circle cx="39.2" cy="36.6" r="1" fill="#fff" />
+      {/* mouth */}
+      <path d="M28 46 Q32 50 36 46" fill="none" stroke="#0b0b0b" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M30 47.2 L30 48.6 L31 48.6 Z M34 47.2 L34 48.6 L33 48.6 Z" fill="#fff" />
+      {/* cheek dots */}
+      <circle cx="22" cy="44" r="1.3" fill="#e87a18" opacity="0.65" />
+      <circle cx="42" cy="44" r="1.3" fill="#e87a18" opacity="0.65" />
+    </svg>
+  );
+}
+
 export default function Nav() {
   return (
     <header className="fixed top-4 left-1/2 z-50 w-[min(96%,1200px)] -translate-x-1/2">
-      <nav className="flex items-center justify-between rounded-full border border-line/80 bg-bg-2/85 px-3 py-2 shadow-[0_8px_40px_-12px_rgba(57,255,138,0.35)] backdrop-blur-md">
-        <Link href="/" className="flex items-center gap-2 pl-2">
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-orange text-bg shadow-[0_0_18px_rgba(255,122,26,0.7)]">
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
-              <circle cx="12" cy="13" r="7" fill="#0a0d12" />
-              <rect x="11" y="3" width="2" height="4" fill="#0a0d12" />
-              <path d="M13 5 Q16 4 17 6" stroke="#0a0d12" strokeWidth="1.5" fill="none" strokeLinecap="round" />
-            </svg>
-          </span>
-          <span className="font-display text-xl tracking-[0.18em] text-orange glow-orange">
+      <nav className="flex items-center justify-between rounded-full bg-ink px-3 py-2 shadow-[0_8px_30px_-10px_rgba(0,0,0,0.45)]">
+        <Link href="/" className="flex items-center gap-2 pl-1">
+          <Logo />
+          <span className="font-fat text-2xl tracking-[0.02em] text-orange leading-none pt-1">
             ORANGE
           </span>
         </Link>
 
-        <ul className="hidden items-center gap-7 text-[13px] font-medium text-fg/85 md:flex">
-          <li><a href="#home" className="hover:text-neon transition-colors">Home</a></li>
-          <li><a href="#about" className="hover:text-neon transition-colors">About</a></li>
-          <li><a href="#tokenomics" className="hover:text-neon transition-colors">Tokenomics</a></li>
-          <li><a href="#roadmap" className="hover:text-neon transition-colors">Roadmap</a></li>
+        <ul className="hidden items-center gap-10 text-[15px] text-white sm:flex">
+          <li><a href="#home" className="hover:text-orange transition-colors">Home</a></li>
+          <li><a href="#about" className="hover:text-orange transition-colors">About</a></li>
+          <li><a href="#tokenomics" className="hover:text-orange transition-colors">Tokenomics</a></li>
+          <li><a href="#roadmap" className="hover:text-orange transition-colors">Roadmap</a></li>
         </ul>
 
         <a
           href="#buy"
-          className="rounded-full bg-neon px-5 py-2 text-sm font-bold text-bg shadow-[0_0_18px_rgba(57,255,138,0.5)] transition-transform hover:scale-[1.03] active:scale-[0.98]"
+          className="font-fat rounded-full bg-orange px-6 py-2 text-[17px] text-ink leading-none pt-3 pb-2 shadow-[0_2px_0_0_rgba(0,0,0,0.4)] transition-transform hover:scale-[1.03] active:scale-[0.98]"
         >
           Buy Now
         </a>

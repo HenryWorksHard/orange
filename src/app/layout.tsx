@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Black_Ops_One, Permanent_Marker } from "next/font/google";
+import { Geist, Geist_Mono, Bagel_Fat_One, Permanent_Marker } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const blackOps = Black_Ops_One({
-  variable: "--font-display",
+const fat = Bagel_Fat_One({
+  variable: "--font-fat",
   weight: "400",
   subsets: ["latin"],
 });
@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${blackOps.variable} ${marker.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${fat.variable} ${marker.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-fg font-sans">
         {children}

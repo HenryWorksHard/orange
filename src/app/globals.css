@@ -1,27 +1,29 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-bg: #0a0d12;
-  --color-bg-2: #11161e;
-  --color-panel: #161c26;
-  --color-panel-2: #1d2532;
-  --color-line: #2a3447;
-  --color-fg: #e8ecf4;
-  --color-mute: #8a93a6;
+  /* cream brick wall background */
+  --color-bg: #f4e5a0;
+  --color-bg-2: #ecd987;
+  --color-brick: #dccb6a;
+  --color-cream: #fff6dc;
 
-  --color-neon: #39ff8a;
-  --color-neon-2: #00d971;
-  --color-purple: #a259ff;
-  --color-purple-2: #7a3fd6;
-  --color-orange: #ff7a1a;
-  --color-orange-2: #ff5a00;
-  --color-pink: #ff3d8a;
-  --color-cyan: #38e8ff;
+  /* ink (nav pill, outlines, body text) */
+  --color-ink: #0b0b0b;
+  --color-ink-2: #1d1d1d;
+  --color-fg: #0b0b0b;
+  --color-fg-on-dark: #ffffff;
+  --color-mute: #6b6450;
+
+  /* signature orange + a darker shade for depth */
+  --color-orange: #f39424;
+  --color-orange-2: #d67615;
+  --color-orange-3: #ff7a1a;
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --font-display: var(--font-display), "Impact", system-ui, sans-serif;
   --font-tag: var(--font-tag), "Comic Sans MS", system-ui, sans-serif;
+  --font-fat: var(--font-fat), "Impact", system-ui, sans-serif;
 }
 
 html, body {
@@ -29,15 +31,12 @@ html, body {
   color: var(--color-fg);
 }
 
-/* base gamer-room backdrop: dark with subtle grid + radial neon glow */
+/* cream brick wall — offset rows like real masonry */
 body {
   background-color: var(--color-bg);
-  background-image:
-    radial-gradient(circle at 20% 15%, rgba(162, 89, 255, 0.18), transparent 55%),
-    radial-gradient(circle at 80% 85%, rgba(57, 255, 138, 0.14), transparent 50%),
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: auto, auto, 44px 44px, 44px 44px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 80'><line x1='0' y1='40' x2='160' y2='40' stroke='%23dccb6a' stroke-width='2'/><line x1='80' y1='0' x2='80' y2='40' stroke='%23dccb6a' stroke-width='2'/><line x1='0' y1='40' x2='0' y2='80' stroke='%23dccb6a' stroke-width='2'/><line x1='160' y1='40' x2='160' y2='80' stroke='%23dccb6a' stroke-width='2'/></svg>");
+  background-size: 160px 80px;
+  background-repeat: repeat;
 }
 
 @keyframes flicker {
@@ -45,16 +44,6 @@ body {
   48% { opacity: 1; }
   50% { opacity: 0.6; }
   52% { opacity: 1; }
-}
-
-@keyframes glow-pulse {
-  0%, 100% { filter: drop-shadow(0 0 8px rgba(57, 255, 138, 0.55)); }
-  50%      { filter: drop-shadow(0 0 18px rgba(57, 255, 138, 0.95)); }
-}
-
-@keyframes blink {
-  0%, 92%, 100% { transform: scaleY(1); }
-  95% { transform: scaleY(0.08); }
 }
 
 @keyframes float-y {
@@ -67,27 +56,6 @@ body {
   50%, 100% { opacity: 0; }
 }
 
-.glow-neon { text-shadow: 0 0 10px rgba(57, 255, 138, 0.7), 0 0 22px rgba(57, 255, 138, 0.35); }
-.glow-purple { text-shadow: 0 0 10px rgba(162, 89, 255, 0.7), 0 0 22px rgba(162, 89, 255, 0.35); }
-.glow-orange { text-shadow: 0 0 12px rgba(255, 122, 26, 0.65), 0 0 28px rgba(255, 90, 0, 0.35); }
-
-.scanlines::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.04) 0px,
-    rgba(255, 255, 255, 0.04) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-  mix-blend-mode: overlay;
-}
-
 .animate-flicker { animation: flicker 4.5s infinite; }
-.animate-glow { animation: glow-pulse 2.4s ease-in-out infinite; }
-.animate-blink { animation: blink 5s infinite; transform-origin: center; }
 .animate-float { animation: float-y 4s ease-in-out infinite; }
 .animate-caret { animation: caret-blink 1s steps(2) infinite; }
